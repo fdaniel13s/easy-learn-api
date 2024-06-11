@@ -1,11 +1,15 @@
 const express = require('express')
 const app = express()
 const port = 3000
+const cursosRoutes = require('./api/cursos/curso.routes');
+const connectDB = require('./config/db');
 
-app.get('/', (req, res) => {
-    res.send('Initial test ')
-})
+connectDB();
+
+
+app.use('/api/cursos', cursosRoutes);
+
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Easy learn API listening on port ${port}`)
 })
