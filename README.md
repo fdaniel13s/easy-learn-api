@@ -4,8 +4,8 @@
 # Lista de endpoints de la API.
 
 - Curso 
-    - GET /api/cursos
-    - GET /api/cursos/:id
+    - GET /api/cursos - DONE
+    - GET /api/cursos/:id 
     - POST /api/cursos
     - PUT /api/cursos/:id
     - DELETE /api/cursos/:id

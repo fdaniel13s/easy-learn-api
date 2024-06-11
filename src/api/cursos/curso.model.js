@@ -22,6 +22,6 @@ const CursoSchema = new mongoose.Schema({
             estrella: Number
         }
     ]
-});
+},{versionKey:false });
 
 module.exports = mongoose.model('Curso', CursoSchema);
