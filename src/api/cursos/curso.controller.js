@@ -9,8 +9,10 @@ const getCursos = async (req, res) => {
     }
 };
 
+//Métodos CRUD
 
-const postCursos = async (req,res) => {
+// Representando e CREATE con POST
+const postCurso = async (req, res) => {
     console.log(req.body); // Agrega esta línea
     try{
         const curso = new Curso(req.body);
@@ -21,8 +23,8 @@ const postCursos = async (req,res) => {
     }
 }
 
+//Representando el READ con GET
 //Get Curso por Id
-
 const getCursoById = async (req, res) => {
     try {
         const curso = await Curso.findById(req.params.id);
@@ -30,12 +32,41 @@ const getCursoById = async (req, res) => {
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-
 }
+
+//Representando el UPDATE con PUT
+//Put Curso por Id
+const putCursoById = async (req, res) => {
+    try {
+        const curso = await
+        Curso.findByIdAndUpdate(req.params.id , req.body , {new: true});
+        res.json(curso);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+//Representando el DELETE con DELETE
+
+//Delete Curso por Id
+const deleteCursoById = async (req, res) => {
+    try {
+        const curso = await Curso.findByIdAndDelete(req.params.id);
+        res.json({message: 'El curso fue eliminado'});
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+}
+
+
+
 
 
 module.exports = {
     getCursos,
-    postCursos,
-    getCursoById
+    postCursos: postCurso,
+    getCursoById,
+    putCursoById,
+    deleteCursoById
 };

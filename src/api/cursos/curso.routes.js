@@ -8,4 +8,8 @@ router.post('/', cursoController.postCursos);
 
 router.get('/:id', cursoController.getCursoById);
 
+router.put('/:id', cursoController.putCursoById);
+
+router.delete('/:id', cursoController.deleteCursoById);
+
 module.exports = router; 
