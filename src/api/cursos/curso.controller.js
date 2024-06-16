@@ -10,7 +10,6 @@ const getCursos = async (req, res) => {
 };
 
 //Métodos CRUD
-
 // Representando e CREATE con POST
 const postCurso = async (req, res) => {
     console.log(req.body); // Agrega esta línea
@@ -48,7 +47,6 @@ const putCursoById = async (req, res) => {
 }
 
 //Representando el DELETE con DELETE
-
 //Delete Curso por Id
 const deleteCursoById = async (req, res) => {
     try {
@@ -58,10 +56,6 @@ const deleteCursoById = async (req, res) => {
         res.status(500).json({message: error.message});
     }
 }
-
-
-
-
 
 module.exports = {
     getCursos,

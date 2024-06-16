@@ -24,6 +24,6 @@ const GrupoEstudioSchema = new mongoose.Schema({
     fecha_creacion: Date,
     miembros: [MiembroSchema],
     publicaciones: [PublicacionSchema]
-});
+},{versionKey:false });
 
-module.exports = mongoose.model('GrupoEstudio', GrupoEstudioSchema);
+module.exports = mongoose.model('GrupoEstudio', GrupoEstudioSchema, 'grupos_estudio');

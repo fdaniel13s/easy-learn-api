@@ -7,10 +7,7 @@ const gruposDeEstudioRoutes = require('./api/grupos-de-estudio/grupos-de-estudio
 const instructoresRoutes = require('./api/instructores/intructor.routes');
 const inscripcionesRoutes = require('./api/inscripciones/inscripcion.routes');
 const rutasDeAprendizajeRoutes = require('./api/rutas-de-aprendizaje/rutas-de-aprendizaje.routes');
-
 const connectDB = require('./config/db');
-
-// Añade esta línea para analizar el cuerpo de las solicitudes JSON
 app.use(express.json());
 
 connectDB();

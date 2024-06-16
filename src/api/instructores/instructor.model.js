@@ -10,6 +10,6 @@ const InstructorSchema = new mongoose.Schema({
     telefono: String,
     fecha_creacion: Date,
     cursos: [CursoSchema]
-});
+},{versionKey:false });
 
-module.exports = mongoose.model('Instructor', InstructorSchema);
+module.exports = mongoose.model('Instructor', InstructorSchema, 'instructores');

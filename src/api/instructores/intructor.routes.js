@@ -7,3 +7,5 @@ router.post('/', instructorController.postInstructor);
 router.get('/:id', instructorController.getInstructorById);
 router.put('/:id', instructorController.putInstructorById);
 router.delete('/:id', instructorController.deleteInstructorById);
+
+module.exports = router;

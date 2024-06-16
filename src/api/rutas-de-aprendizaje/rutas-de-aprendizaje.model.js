@@ -10,6 +10,6 @@ const RutaAprendizajeSchema = new mongoose.Schema({
     precio: Number,
     descripcion: String,
     cursos: [CursoSchema]
-});
+},{versionKey:false });
 
-module.exports = mongoose.model('RutaAprendizaje', RutaAprendizajeSchema);
+module.exports = mongoose.model('RutaAprendizaje', RutaAprendizajeSchema , 'rutas_de_aprendizaje');
