@@ -40,13 +40,27 @@ const getAlumnoById = async (req, res) => {
 //Put Alumno por Id
 const putAlumnoById = async (req, res) => {
     try {
-        const alumno = await Alumno.findByIdAndUpdate(req.params.id , req.body , {new: true});
+        const alumno = await Alumno.findByIdAndUpdate(
+            req.params.id,
+            { $push: { cursos: req.body } },
+            { new: true, useFindAndModify: false }
+        );
         res.json(alumno);
-    }
-    catch (error) {
+    } catch (error) {
         res.status(500).json({ message: error.message });
     }
+};
+
+const updateAlumno = async (req, res) => {
+    try {
+        const alumno = await Alumno.
+        findByIdAndUpdate( req.params.id,req.body );
+        res.json(alumno);
+    }catch (error){
+        res.status(500).json({message:error.message});
+    }
 }
+
 
 //Representando el DELETE con DELETE
 const deleteAlumnoById = async (req, res) => {
@@ -58,10 +72,27 @@ const deleteAlumnoById = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    try {
+        console.log(req.query);
+        const alumno = await Alumno.findOne( { correo: req.query.correo, password: req.query.password } )
+        if (alumno) {
+            res.json(alumno);
+        } else {
+            res.status(404).json({ message: 'No se encontró un alumno con ese correo y contraseña' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
 module.exports = {
     postAlumno,
     getAlumnos,
     getAlumnoById,
     putAlumnoById,
-    deleteAlumnoById
+    deleteAlumnoById,
+    login,
+    updateAlumno
 };

@@ -31,8 +31,11 @@ const postGrupoDeEstudio = async (req, res) => {
 
 const putGrupoDeEstudioById = async (req, res) => {
     try {
-        const grupoDeEstudio = await GrupoEstudio.findByIdAndUpdate
-        (req.params.id, req.body, {new: true});
+        const grupoDeEstudio = await GrupoEstudio.findByIdAndUpdate(
+            req.params.id,
+            { $push: { miembros: req.body } },
+            { new: true }
+        );
         res.json(grupoDeEstudio);
     }
     catch (error) {

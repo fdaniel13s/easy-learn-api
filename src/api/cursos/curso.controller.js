@@ -1,4 +1,6 @@
 const Curso = require('./curso.model');
+const mongoose = require('mongoose');
+
 
 const getCursos = async (req, res) => {
     try {
@@ -57,10 +59,21 @@ const deleteCursoById = async (req, res) => {
     }
 }
 
+const getCursoByInstructorId = async (req, res) => {
+    try {
+        const id = new mongoose.Types.ObjectId(req.params.id);
+        const cursos = await Curso.find({ 'instructor': id });
+        res.json(cursos);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 module.exports = {
     getCursos,
     postCursos: postCurso,
     getCursoById,
     putCursoById,
-    deleteCursoById
+    deleteCursoById,
+    getCursoByInstructorId
 };

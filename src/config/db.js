@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 
 const connectDB = async () => {
     try {
-        const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27018/easylearnDb';
+        const mongoURL = process.env.MONGO_URL || 'mongodb://localhost:27019/easylearnDb';
+
         await mongoose.connect(mongoURL);
 
         console.log('MongoDB connection SUCCESS');

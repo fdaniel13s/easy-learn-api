@@ -8,6 +8,7 @@ const InstructorSchema = new mongoose.Schema({
     nombre: String,
     correo: String,
     telefono: String,
+    password: String,
     fecha_creacion: Date,
     cursos: [CursoSchema]
 },{versionKey:false });

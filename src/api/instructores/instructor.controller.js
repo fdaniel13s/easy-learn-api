@@ -48,10 +48,24 @@ const deleteInstructorById = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    try {
+        const instructor = await Instructor.findOne({ correo: req.query.correo, password: req.query.password });
+        if (instructor) {
+            res.json(instructor);
+        } else {
+            res.status(404).json({ message: 'No se encontró un instructor con ese correo y contraseña' });
+        }
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
 module.exports = {
     getInstructores,
     getInstructorById,
     postInstructor,
     putInstructorById,
-    deleteInstructorById
+    deleteInstructorById,
+    login
 }

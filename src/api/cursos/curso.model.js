@@ -8,6 +8,7 @@ const CursoSchema = new mongoose.Schema({
     fecha_creacion: Date,
     ultima_actualizacion: Date,
     nivel: String,
+    instructor: mongoose.Schema.Types.ObjectId, // Agregamos el campo instructor aquí
     lecciones: [
         {
             titulo: String,

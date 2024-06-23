@@ -1,5 +1,9 @@
 const mongoose = require('mongoose');
 
+const CursoSchema = new mongoose.Schema({
+    titulo: String
+});
+
 const SuscripcionSchema = new mongoose.Schema({
     precio: Number,
     descripcion: String,
@@ -26,9 +30,11 @@ const AlumnoSchema = new mongoose.Schema({
     nombre: String,
     apellido: String,
     correo: String,
+    password: String,
     suscripciones: [SuscripcionSchema],
     certificados: [CertificadoSchema],
-    foros: [ForoSchema]
+    foros: [ForoSchema],
+    cursos: [CursoSchema] // Agregamos el campo cursos aquí
 },{versionKey:false});
 
 module.exports = mongoose.model('Alumno', AlumnoSchema);
